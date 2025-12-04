@@ -52,8 +52,9 @@ class InvoiceController extends Controller
 
         }catch (Exception $e){
             DB::rollBack();
-            return 0;
+            return $e->getMessage();
         }
+
    }
 
 }

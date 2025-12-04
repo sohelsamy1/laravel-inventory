@@ -19,6 +19,8 @@ Route::get('/logout', [UserController::class, 'logout']);
 Route::post('/send-otp', [UserController::class, 'sendOTP']);
 Route::post('/verify-otp', [UserController::class, 'verifyOTP']);
 Route::post('/reset-password', [UserController::class, 'resetPassword'])->middleware(TokenVerificationMiddleware::class);
+Route::get('/user-profile', [UserController::class, 'userProfile'])->middleware(TokenVerificationMiddleware::class);
+Route::post('/user-profile-update', [UserController::class, 'updateUserProfile'])->middleware(TokenVerificationMiddleware::class);
 
 
 //Category Api
@@ -44,6 +46,10 @@ Route::post('/product-update', [ProductController::class, 'ProductUpdate'])->mid
 
 //Invoice API
 Route::post('/invoice-create', [InvoiceController::class, 'InvoiceCreate'])->middleware(TokenVerificationMiddleware::class);
+
+
+//Dashboard summery
+Route::get('/summary', [DashboardController::class, 'summary'])->middleware(TokenVerificationMiddleware::class);
 
 
 // Route::get('/', [HomeController::class, 'homePage']);

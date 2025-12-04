@@ -39,6 +39,7 @@ class ProductController extends Controller
   }
 
   public function ProductDelete(Request $request){
+    
       $user_id = $request->header('user_id');
       $product_id = $request->input('id');
 

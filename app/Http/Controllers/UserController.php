@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Mail\OTPMail;
 use App\Helper\JWTToken;
 use Illuminate\Http\Request;
+use PHPUnit\Runner\Exception;
 use Illuminate\Support\Facades\Mail;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -35,10 +36,10 @@ class UserController extends Controller
 
 
        public function userLogin(Request $request){
-        $user_id = User::where(['email' => $request->email, 'password' => $request->password])->select('id')->first();
+        $user= User::where(['email' => $request->email, 'password' => $request->password])->select('id')->first();
 
-        if($user_id !== null){
-         $token = JWTToken::createToken($request->email, $user_id->id);
+        if($user !== null){
+         $token = JWTToken::createToken($request->email, $user->id);
          return response()->json([
                 'status' => 'success',
                  'message' => 'User Login successful'
@@ -123,11 +124,49 @@ class UserController extends Controller
         return response()->json([
                 'status' => 'failed',
                 'message' => 'Unable to reset password'
-         ], 200);
+         ]);
         }
        }
 
+    public function userProfile(Request $request){
+        $email = $request->header('email');
+        $user = User::where('email', $email)->first();
+        return response()->json([
+                'status' => 'success',
+                'message' => 'User Profile',
+                'data' => $user
+         ], 200);
+        }
 
+        //user profile update
+    public function updateUserProfile(Request $request){
+
+      try{
+         $email = $request->header('email');
+       $first_name = $request->first_name;
+       $last_name = $request->last_name;
+       $mobile = $request->mobile;
+       $password = $request->password;
+
+       User::where('email', $email)->update([
+             'first_name' => $first_name,
+              'last_name' => $last_name,
+              'mobile' => $mobile,
+              'password' => $password
+       ]);
+
+         return response()->json([
+             'status' => 'success',
+                'message' => 'User Profile update successfully',
+         ], 200);
+
+        }catch(Exception $e){
+            return response()->json([
+                'status' => 'failed',
+                'message' => 'Unable to update your profile',
+            ], 200);
+        }
+        }
 
     //       public function restPasswordPage(){
     //     return view('pages.auth.reset-pass-page');
