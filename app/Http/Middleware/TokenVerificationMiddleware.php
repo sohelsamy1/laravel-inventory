@@ -21,10 +21,11 @@ class TokenVerificationMiddleware
         $payload = JWTToken::verifyToken($token);
 
         if($payload === 'Invalid Token'){
-            return response()->json([
-                'status' => 'failed',
-                'message' => 'Invalid Token'
-            ], 200);
+            // return response()->json([
+            //     'status' => 'failed',
+            //     'message' => 'Invalid Token'
+            // ], 200);
+            return redirect('/userLogin');
         }else{
 
        $request->headers->set('email', $payload->user_email);
