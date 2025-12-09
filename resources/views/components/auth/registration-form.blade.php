@@ -40,6 +40,8 @@
     </div>
 </div>
 
+
+
 <script>
     async function onRegistration() {
         let email = document.getElementById('email').value;
@@ -100,3 +102,4 @@
         }
 }
 </script>
+
