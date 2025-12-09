@@ -23,7 +23,6 @@ Route::get('/verifyOtp', [UserController::class, 'verifyOtpPage']);
 Route::get('/userProfile', [UserController::class, 'profilePage']);
 
 
-
 //Backend
 //user Route
 Route::post('/user-registration', [UserController::class, 'userRegistration']);
@@ -42,6 +41,11 @@ Route::post('/create-category', [CategoryController::class, 'CreateCategory'])->
 Route::post('/delete-category', [CategoryController::class, 'CategoryDelete'])->middleware(TokenVerificationMiddleware::class);
 Route::post('/category-by-id', [CategoryController::class, 'CategoryByID'])->middleware(TokenVerificationMiddleware::class);
 Route::post('/update-category', [CategoryController::class, 'CategoryUpdate'])->middleware(TokenVerificationMiddleware::class);
+
+
+//Customer Page
+Route::get('/customerPage', [CustomerController::class, 'CustomerPage'])->middleware(TokenVerificationMiddleware::class);
+
 
 //Customer Api
 Route::post('/customer-create', [CustomerController::class, 'CustomerCreate'])->middleware(TokenVerificationMiddleware::class);

@@ -9,6 +9,11 @@ use Illuminate\Http\Request;
 class CustomerController extends Controller
 {
 
+    public function CustomerPage(){
+        return view('pages.dashboard.customer-page');
+    }
+
+
     public function CustomerCreate(Request $request){
         $user_id = $request->header('user_id');
         return Customer::create([
