@@ -14,16 +14,16 @@ use App\Http\Middleware\TokenVerificationMiddleware;
 //frontend
 Route::get('/', [HomeController::class, 'homePage']);
 Route::get('/dashboard', [DashboardController::class, 'dashboardPage'])->name('dashboardPage')->middleware(TokenVerificationMiddleware::class);
-Route::get('/categoryPage', [CategoryController::class, 'categoryPage'])->name('categoryPage');
-Route::get('/customerPage', [CustomerController::class, 'customerPage'])->name('customerPage');
-Route::get('/productPage', [ProductController::class, 'productPage'])->name('productPage');
+Route::get('/categoryPage', [CategoryController::class, 'categoryPage'])->name('categoryPage')->middleware(TokenVerificationMiddleware::class);
+Route::get('/customerPage', [CustomerController::class, 'customerPage'])->name('customerPage')->middleware(TokenVerificationMiddleware::class);
+Route::get('/productPage', [ProductController::class, 'productPage'])->name('productPage')->middleware(TokenVerificationMiddleware::class);
 
-Route::get('/userRegistration', [UserController::class, 'userRegistrationPage']);
-Route::get('/userLogin', [UserController::class, 'userloginPage']);
-Route::get('/resetPassword', [UserController::class, 'restPasswordPage']);
-Route::get('/sendOtp', [UserController::class, 'sendOtpPage']);
-Route::get('/verifyOtp', [UserController::class, 'verifyOtpPage']);
-Route::get('/userProfile', [UserController::class, 'profilePage']);
+Route::get('/userRegistration', [UserController::class, 'userRegistrationPage'])->middleware(TokenVerificationMiddleware::class);
+Route::get('/userLogin', [UserController::class, 'userloginPage'])->middleware(TokenVerificationMiddleware::class);
+Route::get('/resetPassword', [UserController::class, 'restPasswordPage'])->middleware(TokenVerificationMiddleware::class);
+Route::get('/sendOtp', [UserController::class, 'sendOtpPage'])->middleware(TokenVerificationMiddleware::class);
+Route::get('/verifyOtp', [UserController::class, 'verifyOtpPage'])->middleware(TokenVerificationMiddleware::class);
+Route::get('/userProfile', [UserController::class, 'profilePage'])->middleware(TokenVerificationMiddleware::class);
 
 
 //Backend
