@@ -29,7 +29,7 @@
 </div>
 
 
-{{-- <script>
+<script>
 
     async function Save() {
 
@@ -68,4 +68,4 @@
         }
     }
 
-</script> --}}
+</script>
