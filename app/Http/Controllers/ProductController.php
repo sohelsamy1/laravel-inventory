@@ -8,6 +8,10 @@ use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
+
+    public function productPage(){
+        return view('pages.dashboard.product-page');
+    }
     public function CreateProduct(Request $request){
          $user_id = $request->header('user_id');
         //  if($request->hasFile('image')){

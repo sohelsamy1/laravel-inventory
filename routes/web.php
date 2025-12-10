@@ -16,6 +16,7 @@ Route::get('/', [HomeController::class, 'homePage']);
 Route::get('/dashboard', [DashboardController::class, 'dashboardPage'])->name('dashboardPage')->middleware(TokenVerificationMiddleware::class);
 Route::get('/categoryPage', [CategoryController::class, 'categoryPage'])->name('categoryPage');
 Route::get('/customerPage', [CustomerController::class, 'customerPage'])->name('customerPage');
+Route::get('/productPage', [ProductController::class, 'productPage'])->name('productPage');
 
 Route::get('/userRegistration', [UserController::class, 'userRegistrationPage']);
 Route::get('/userLogin', [UserController::class, 'userloginPage']);

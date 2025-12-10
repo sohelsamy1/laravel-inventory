@@ -102,7 +102,7 @@
             }
 
             showLoader();
-            let res = await axios.post("/create-product",formData,config)
+            let res = await axios.post("/product-create",formData,config)
             hideLoader();
 
             if(res.status===201){
