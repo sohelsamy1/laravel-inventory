@@ -79,9 +79,7 @@ You can test the API using:
 
 ## 👤 Author
 
-Sohel Samy
-Laravel | Vue | React Developer
-
-GitHub: https://github.com/sohelsamy1
-
-LinkedIn: https://linkedin.com/in/sohelsamy
+Sohel Samy  
+Laravel | Vue | React Developer  
+GitHub: https://github.com/sohelsamy1  
+LinkedIn: https://linkedin.com/in/sohelsamy  
